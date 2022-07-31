@@ -52,7 +52,7 @@ local function PayBills(...)
 						----------------------
 						if amount >= result[i].amount then -- Check if the percent set in config is enough to cover invoice amount
 							----------------------
-							ply.Functions.RemoveMoney('bank', result[i].amount, "Past due invoices") -- If Money is enough to cover the full amount, lets remove it 
+							ply.Functions.RemoveMoney('bank', result[i].amount, "Past due invoices") -- If Money is enough to cover the full amount, lets remove it
 							----------------------
 							TriggerClientEvent('QBCore:Notify', ply.PlayerData.source, "you paid ".. mathGroupDigits(result[i].amount).." on past due invoices", "primary") -- Notify player that has been charged for an invoice
 							----------------------
@@ -80,7 +80,7 @@ local function PayBills(...)
 							----------------------
 							if result[i].amount >= amount and amount > 0 then -- Check if invoice amount is more or equal than player balance and player balance is not 0
 								----------------------
-								ply.Functions.RemoveMoney('bank', amount, "Past due invoices | Partial Payment") -- Here we will remove the percent amount cause its not enough to cover the full invoice amount 
+								ply.Functions.RemoveMoney('bank', amount, "Past due invoices | Partial Payment") -- Here we will remove the percent amount cause its not enough to cover the full invoice amount
 								----------------------
 								TriggerClientEvent('QBCore:Notify', ply.PlayerData.source, "you paid partially ".. mathGroupDigits(amount).." on past due invoices", "primary") -- Notify player that has been charged for an invoice
 								----------------------
@@ -98,16 +98,16 @@ local function PayBills(...)
 									----------------------
 								end
 								----------------------
-								MySQL.update('UPDATE phone_invoices SET amount = amount - :partialpayment WHERE id = :id', {partialpayment = amount, id = result[i].id}) -- Update invoice amount 
+								MySQL.update('UPDATE phone_invoices SET amount = amount - :partialpayment WHERE id = :id', {partialpayment = amount, id = result[i].id}) -- Update invoice amount
 								----------------------
 								if Config.Debug then print(ply.PlayerData.name.." pay partially "..amount.." from bill to "..result[i].society) end -- Print in console if debug is true
 								----------------------
 							end
 						end
-						
+
 					end
 			-----------------------
-			--- Offline Payment ---		
+			--- Offline Payment ---
 			-----------------------
 				else -- It doesn't matter if you're offline, you'll still pay
 					----------------------
@@ -154,7 +154,7 @@ local function PayBills(...)
 									----------------------
 									MySQL.update('UPDATE players SET money = :accounts WHERE citizenid = :cid',{accounts = json.encode(accounts), cid = result[i].citizenid}) -- Save new money balance
 									----------------------
-									MySQL.update('UPDATE phone_invoices SET amount = amount - :partialpayment WHERE id = :id',{partialpayment = amount, id = result[i].id}) -- Update invoice amount 
+									MySQL.update('UPDATE phone_invoices SET amount = amount - :partialpayment WHERE id = :id',{partialpayment = amount, id = result[i].id}) -- Update invoice amount
 									----------------------
 									if result[i].society then -- Check if society is not empty
 										----------------------

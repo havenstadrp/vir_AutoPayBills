@@ -16,7 +16,7 @@ Config.AutoPayBills = {
 
 -- If want to invest in some jobs funds, enable this below
 Config.JobsInvest = {
-    enable = true, -- If set to true will add money in societys at Config.JobsInvestment at time you set
+    enable = false, -- If set to true will add money in societys at Config.JobsInvestment at time you set
     hour = 13, -- 24hrs format | ex. 13:00 = 1:00pm
     minutes = 00
 }
